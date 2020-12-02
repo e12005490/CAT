@@ -42,6 +42,7 @@ Soon you should be able to :code:`pip install <InsertPyPi Name>`. For now, refer
    utils.rst
    factorize.rst
    logging.rst
+   timing.rst
 
 
 Package and Module Index
