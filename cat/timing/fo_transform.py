@@ -12,8 +12,9 @@ def error_oracle(plaintext, modification, pk, h, encrypt, decaps_timing, detect_
         encrypt ((int, int, int) -> int): encryption function of `pk`, `plaintext` and
             some random bits
         decaps_timing ((int) -> int): function timing the decapsulation of a ciphertext
-        detect_err ((int) -> bool): function determining if a decryption error occurred
-            from a decapsulation time
+        detect_err ((int) -> int): function determining if a decryption error occurred
+            from a decapsulation time, with `0` meaning no error, `1` meaning error,
+            and `-1` meaning inconclusive.
 
     Returns:
         bool: a value indicating whether a decapsulation error occurred
@@ -54,8 +55,8 @@ def recover_sk(n, message_gen, pk, h, encrypt,
     for _ in range(n):
         m = message_gen()
         modification = 0
-        while not error_oracle(m, modification + 1, pk, h,
-                               encrypt, decaps_timing, detect_err):
+        while error_oracle(m, modification + 1, pk, h,
+                           encrypt, decaps_timing, detect_err) not in [0, 1]:
             modification += 1
 
         pairs.append((m, modification))

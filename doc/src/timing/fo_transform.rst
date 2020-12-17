@@ -6,7 +6,6 @@ The Fujisaki-Okamoto transform (FOT) is a way to convert weak asymmetric and sym
 Variations of this transformation can be used to create IND-CCA-secure key encapsulation mechanisms (KEM), which are used to ensure secure sharing of symmetric keys using asymmetric schemes. Such a variation is given in [hofheinz-et-al]_:
 
 .. image:: ../figures/fo_kem.*
-	:width: 100 %
 
 where :math:`\mathsf{PKE}_1 = (\mathsf{Gen}_1, \mathsf{Enc}_1, \mathsf{Dec}_1)` is the underlying asymmetric scheme, :math:`\mathcal{M}` its message space, and :math:`\mathsf{H}` a hash function.
 
